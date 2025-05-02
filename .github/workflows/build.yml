@@ -73,6 +73,19 @@ jobs:
       run: |
         sudo rm -rf /mnt/arch/data /mnt/arch/MiceWine-RootFS-Generator/workdir /mnt/arch/MiceWine-RootFS-Generator/rootfs
 
+    - name: "Start Building (i386)"
+      run: |
+        sudo arch-chroot /mnt/arch bash -c "cd /MiceWine-RootFS-Generator && ./build-all.sh i386 --ci && cd logs && 7z a /MiceWine-RootFS-\($(git rev-parse --short HEAD)\)-i386-Logs.zip"
+
+    - name: "Create RootFS File (i386)"
+      run: |
+        sudo arch-chroot /mnt/arch bash -c "cd /MiceWine-RootFS-Generator && ./create-rootfs-rat.sh i386 && mv MiceWine-RootFS-\($(git rev-parse --short HEAD)\)-i386.rat /"
+
+    - name: "Clean (i386) RootFS"
+      run: |
+        sudo rm -rf /mnt/arch/data /mnt/arch/MiceWine-RootFS-Generator/workdir /mnt/arch/MiceWine-RootFS-Generator/rootfs
+
+
     - name: "Start Building (aarch64)"
       run: |
         sudo arch-chroot /mnt/arch bash -c "cd /MiceWine-RootFS-Generator && ./build-all.sh aarch64 --ci && cd logs && 7z a /MiceWine-RootFS-\($(git rev-parse --short HEAD)\)-aarch64-Logs.zip"
