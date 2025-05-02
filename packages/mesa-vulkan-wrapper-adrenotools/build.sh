@@ -3,7 +3,7 @@ PKG_CATEGORY="AdrenoTools"
 PKG_PRETTY_NAME="Mesa Android Wrapper (AdrenoTools)"
 VK_DRIVER_LIB="libvulkan_wrapper.so"
 
-BLACKLIST_ARCH="x86_64 i386"
+BLACKLIST_ARCH="x86_64 i686"
 
 GIT_URL=https://github.com/xMeM/mesa
 GIT_COMMIT=e65c7eb6ee2f9903c3256f2677beb1d98464103f

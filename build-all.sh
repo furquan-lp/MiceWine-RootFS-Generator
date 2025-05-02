@@ -432,7 +432,7 @@ showHelp()
 	echo "Available Archs:"
 	echo "  x86_64"
 	echo "  aarch64"
-	echo "  i386"
+	echo "  i686"
 }
 
 if [ $# -lt 1 ]; then
@@ -440,7 +440,7 @@ if [ $# -lt 1 ]; then
 	exit 0
 fi
 
-case $1 in "aarch64"|"x86_64"|"i386")
+case $1 in "aarch64"|"x86_64"|"i686")
 	export ARCH=$1
 	;;
 	"--help")
