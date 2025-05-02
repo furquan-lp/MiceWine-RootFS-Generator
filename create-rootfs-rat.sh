@@ -4,8 +4,8 @@ if [ $# -lt 1 ]; then
   exit 0
 fi
 
-if [ "$1" != "aarch64" ] && [ "$1" != "x86_64" ]; then
-  echo "Invalid Architecture Specified, Available 'aarch64' and 'x86_64'"
+if [ "$1" != "aarch64" ] && [ "$1" != "x86_64" ] && [ "$1" != "i386" ]; then
+  echo "Invalid Architecture Specified, Available 'aarch64', 'x86_64' and i386."
   exit 0
 fi
 

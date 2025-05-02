@@ -136,7 +136,7 @@ setupPackage()
 		return 0
 	fi
 
-	if [ "$BLACKLIST_ARCH" == "$ARCH" ]; then
+	if echo "$BLACKLIST_ARCH" | grep -qw "$ARCH"; then
 		echo "-- Warning: '$package' will not be built."
 		return 0
 	fi
@@ -432,6 +432,7 @@ showHelp()
 	echo "Available Archs:"
 	echo "  x86_64"
 	echo "  aarch64"
+	echo "  i386"
 }
 
 if [ $# -lt 1 ]; then
@@ -439,7 +440,7 @@ if [ $# -lt 1 ]; then
 	exit 0
 fi
 
-case $1 in "aarch64"|"x86_64")
+case $1 in "aarch64"|"x86_64"|"i386")
 	export ARCH=$1
 	;;
 	"--help")
