@@ -28,7 +28,8 @@ jobs:
           pacman-key --init && \
           pacman-key --populate && \
           sed -i 's/#Server/Server/g' /etc/pacman.d/mirrorlist && \
-          sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf && \
+          sed -i '/^#\[multilib\]/s/^#//' /etc/pacman.conf && \
+          sed -i '/^\[multilib\]/{n;s/^#//}' /etc/pacman.conf && \
           sed -i "s/CheckSpace/#CheckSpace/g" /etc/pacman.conf && \
           pacman -Syu --noconfirm \
             base base-devel git cmake meson ninja bison flex \
